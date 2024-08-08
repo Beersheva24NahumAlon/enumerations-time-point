@@ -11,12 +11,15 @@ public class FutureProximityAjuster implements TimePointAjuster {
 
     @Override
     public TimePoint adjust(TimePoint timePoint) {
-        //{1, 3, 5, 5, 5, 7, 9}
         int index = java.util.Arrays.binarySearch(timePoints, timePoint);
-        return index < 0 ? timePoints[-index - 1] : timePoints[index + 1];
-    }
-
-    public TimePoint[] getTimePoints() {
-        return timePoints;
+        if (index >= 0) {
+            while (timePoints[index].equals(timePoints[index + 1])) {
+                index++;
+            }
+            index++;
+        } else {
+            index = -index - 1;
+        }
+        return timePoints[index];
     }
 }
