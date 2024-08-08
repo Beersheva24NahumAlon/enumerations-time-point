@@ -1,7 +1,5 @@
 package telran.time;
 
-import java.lang.reflect.Array;
-
 public class FutureProximityAjuster implements TimePointAjuster {
     TimePoint[] timePoints;
 
