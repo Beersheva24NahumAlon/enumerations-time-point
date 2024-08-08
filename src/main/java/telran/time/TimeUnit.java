@@ -13,7 +13,8 @@ public enum TimeUnit {
     }
 
     public float between(TimePoint p1, TimePoint p2) {
-        //TODO
-        return -1;
+        float pAmountOfSeconds1 = p1.getAmount() * p1.getTimeUnit().getValueOfSeconds();
+        float pAmountOfSeconds2 = p2.getAmount() * p2.getTimeUnit().getValueOfSeconds();
+        return (pAmountOfSeconds2 - pAmountOfSeconds1) / valueOfSeconds;
     }
 }

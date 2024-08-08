@@ -11,9 +11,7 @@ public class TimePoint implements Comparable<TimePoint> {
 
     @Override
     public int compareTo(TimePoint arg) {
-        float thisAmountSeconds = amount * timeUnit.getValueOfSeconds();
-        float argAmountSeconds = arg.amount * arg.timeUnit.getValueOfSeconds();
-        return Float.compare(thisAmountSeconds, argAmountSeconds);
+        return (int) TimeUnit.SECOND.between(arg, this);
     }
 
     public float getAmount() {
