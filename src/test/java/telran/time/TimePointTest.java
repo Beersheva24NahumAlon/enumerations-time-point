@@ -13,8 +13,7 @@ public class TimePointTest {
 
     @Test
     void convertTest() {
-        assertEquals(hundredTwentyMinutes.getAmount(), twoHours.convert(TimeUnit.MINUTE).getAmount());
-        assertEquals(hundredTwentyMinutes.getTimeUnit(), twoHours.convert(TimeUnit.MINUTE).getTimeUnit());
+        assertEquals(hundredTwentyMinutes, twoHours.convert(TimeUnit.MINUTE));
     }
 
     @Test
