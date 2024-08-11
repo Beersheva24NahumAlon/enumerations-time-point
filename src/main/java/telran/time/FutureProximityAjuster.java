@@ -11,24 +11,22 @@ public class FutureProximityAjuster implements TimePointAjuster {
 
     @Override
     public TimePoint adjust(TimePoint timePoint) {
-        int index = binarySearch(timePoints, timePoint);
-        index = index < 0 ? -index - 1 : index + 1;
+        int index = getLeastOfGreaterIndex(timePoint);
         return (index < 0 || index >= timePoints.length) ? null : timePoints[index].convert(timePoint.getTimeUnit());
     }
 
-    // This binary search method searches last entry of key in sorted array
-    public static <T extends Comparable<T>> int binarySearch(T[] ar, T key) {
+    private int getLeastOfGreaterIndex(TimePoint timePoint) {
         int start = 0;
-        int finish = ar.length - 1;
-        int middle = (start + finish) / 2;
+        int finish = timePoints.length - 1;
+        int middle = start + (finish - start) / 2;
         while (start <= finish) {
-            if (key.compareTo(ar[middle]) >= 0) {
+            if (timePoint.compareTo(timePoints[middle]) >= 0) {
                 start = middle + 1;
             } else {
                 finish = middle - 1;
             }
-            middle = (start + finish) / 2;
+            middle = start + (finish - start) / 2;
         }
-        return key.equals(ar[middle]) ? middle : -start - 1;
+        return start;
     }
 }
