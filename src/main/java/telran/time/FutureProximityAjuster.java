@@ -13,10 +13,10 @@ public class FutureProximityAjuster implements TimePointAjuster {
     public TimePoint adjust(TimePoint timePoint) {
         int index = binarySearch(timePoints, timePoint);
         index = index < 0 ? -index - 1 : index + 1;
-        return index < 0 || index >= timePoints.length ? null : timePoints[index].convert(timePoint.getTimeUnit());
+        return (index < 0 || index >= timePoints.length) ? null : timePoints[index].convert(timePoint.getTimeUnit());
     }
 
-    //This binary search method searches last entry of key in sorted array
+    // This binary search method searches last entry of key in sorted array
     public static <T extends Comparable<T>> int binarySearch(T[] ar, T key) {
         int start = 0;
         int finish = ar.length - 1;

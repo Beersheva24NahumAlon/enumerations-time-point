@@ -36,5 +36,4 @@ public class TimePoint implements Comparable<TimePoint> {
     public TimePoint with(TimePointAjuster ajuster) {
         return ajuster.adjust(this);
     }
-
 }
